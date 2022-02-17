@@ -24,11 +24,13 @@ export function ListaUsuarios({ users }) {
             .then((response) => { console.log('usuario deletado com sucesso ', response) })
     }
 
-    function editUser(usuarioEditado) {
+    function editUser(usuarioEditado, user) {
         return supabaseClient
             .from('usuarios')
-            .update({usuarioEditado})
-            .match({ id: users.id})
+            .update({usuarios: usuarioEditado})
+            .match({usuarios: user.usuarios})
+           /*  .update({id: usersId})
+            .eq({column: 'usuarios'}) */
             .then((response) => { console.log('usuario editado com sucesso', response) })
     }
 
@@ -79,7 +81,8 @@ export function ListaUsuarios({ users }) {
                                         : ''}
                                     {mostrar ? <input
                                         onClick={() => {
-                                            editUser(usuarioEditado)
+                                            console.log('id do usuario agora: ', user.id, user)
+                                            editUser(usuarioEditado, user)
                                         }}
                                         type='submit'
                                         value='Editar'
