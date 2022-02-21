@@ -2,7 +2,6 @@ import React from 'react';
 import { useState } from 'react';
 import '../../../src/App.css'
 import { createClient } from '@supabase/supabase-js';
-import { unstable_renderSubtreeIntoContainer } from 'react-dom';
 
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhhZ2tmbGh3dWh5ZnJmdHFyaXlyIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY0NDg3Mzk0NywiZXhwIjoxOTYwNDQ5OTQ3fQ.dB-bsoKg2FX3pbMrIltUvA_oSUp1TZsyNHqZGWEAADQ';
 const SUPABASE_URL = 'https://xagkflhwuhyfrftqriyr.supabase.co'
@@ -29,8 +28,6 @@ export function ListaUsuarios({ users }) {
             .from('usuarios')
             .update({usuarios: usuarioEditado})
             .match({usuarios: user.usuarios})
-           /*  .update({id: usersId})
-            .eq({column: 'usuarios'}) */
             .then((response) => { console.log('usuario editado com sucesso', response) })
     }
 

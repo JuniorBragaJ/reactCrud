@@ -18,6 +18,17 @@ function novosUsuariosLive(adicionaUsuario) {
     .subscribe();
 }
 
+function atualizaLista () {
+  return supabaseClient
+    .from('usuarios')
+    .on('DELETE', () => {
+      window.location.reload(false);
+    })
+    .on('UPDATE', () => {
+      window.location.reload(false);
+    })
+}
+
 
 export default function App() {
   const [usuario, setUsuario] = useState('')
@@ -42,6 +53,7 @@ export default function App() {
         ]
       })
     });
+    atualizaLista ();
 
   }, [])
 
@@ -76,7 +88,7 @@ export default function App() {
               }
             }}
           />
-          <input type="submit" value='Novo usuário' />
+          <input type="submit" value='Adicionar usuário' />
         </form>
       </div>
       <ListaUsuarios users={listaDeUsuarios} />
